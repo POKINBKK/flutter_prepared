@@ -64,7 +64,7 @@ class UserUtils {
         $usernameColumn text not null unique,
         $passwordColumn text not null,
         $phoneColumn text not null,
-        $emailColumn text not null,
+        $emailColumn text not null
       )
       ''');
     });
