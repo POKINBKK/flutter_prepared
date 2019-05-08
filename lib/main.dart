@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import './ui/registerPage.dart';
+import './ui/loginPage.dart';
+import './ui/homePage.dart';
+import './ui/profilePage.dart';
+import './ui/myfriendPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,13 +12,18 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Prepared',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.blue,
       ),
       initialRoute: "/",
       routes: {
-        "/": (context) => RegisterPage(),
+        "/": (context) => LoginPage(),
+        "/register": (context) => RegisterPage(),
+        "/home": (context) => HomePage(),
+        "/profile": (context) => ProfilePage(),
+        "/myfriend": (context) => MyfriendPage(),
       },
     );
   }

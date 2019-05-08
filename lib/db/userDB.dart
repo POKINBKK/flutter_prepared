@@ -2,42 +2,38 @@ import 'package:sqflite/sqflite.dart';
 
 final String userTable = "user";
 final String idColumn = "_id";
-final String firstnameColumn = "firstname";
-final String lastnameColumn = "lastname";
-final String usernameColumn = "username";
+final String useridColumn = "userid";
+final String nameColumn = "name";
+final String ageColumn = "age";
 final String passwordColumn = "password";
-final String phoneColumn = "phone";
-final String emailColumn = "email";
+final String quoteColumn = "quote";
 
 class User {
   int id;
-  String firstname;
-  String lastname;
-  String username;
+  String userid;
+  String name;
+  String age;
   String password;
-  String phone;
-  String email;
+  String quote;
 
   User();
 
   User.formMap(Map<String, dynamic> map) {
     this.id = map[idColumn];
-    this.firstname = map[firstnameColumn];
-    this.lastname = map[lastnameColumn];
-    this.username = map[usernameColumn];
+    this.userid = map[useridColumn];
+    this.name = map[nameColumn];
+    this.age = map[ageColumn];
     this.password = map[passwordColumn];
-    this.phone = map[phoneColumn];
-    this.email = map[emailColumn];
+    this.quote = map[quoteColumn];
   }
 
   Map<String, dynamic> toMap() {
     Map<String, dynamic> map = {
-      firstnameColumn: firstname,
-      lastnameColumn: lastname,
-      usernameColumn: username,
+      useridColumn: userid,
+      nameColumn: name,
+      ageColumn: age,
       passwordColumn: password,
-      phoneColumn: phone,
-      emailColumn: email
+      quoteColumn: quote,
     };
     if (id != null) {
       map[idColumn] = id; 
@@ -46,7 +42,7 @@ class User {
   }
 
   @override
-  String toString() { return 'id = ${this.id}, firstname =  ${this.firstname}, lastname =  ${this.lastname}, username =  ${this.username}, password =  ${this.password}, phone =  ${this.phone}, email =  ${this.email}'; }
+  String toString() { return 'id: ${this.id}, userid:  ${this.userid}, name:  ${this.name}, age:  ${this.age}, password:  ${this.password}, quote:  ${this.quote}'; }
 
 }
 
@@ -59,12 +55,11 @@ class UserUtils {
       await db.execute('''
       create table $userTable (
         $idColumn integer primary key autoincrement,
-        $firstnameColumn text not null,
-        $lastnameColumn text not null,
-        $usernameColumn text not null unique,
+        $useridColumn text not null unique,
+        $nameColumn text not null,
+        $ageColumn text not null,
         $passwordColumn text not null,
-        $phoneColumn text not null,
-        $emailColumn text not null
+        $quoteColumn text
       )
       ''');
     });
@@ -77,7 +72,7 @@ class UserUtils {
 
   Future<User> getUser(int id) async {
     List<Map<String, dynamic>> maps = await db.query(userTable,
-        columns: [idColumn, firstnameColumn, lastnameColumn, usernameColumn, passwordColumn, phoneColumn, emailColumn],
+        columns: [idColumn, useridColumn, nameColumn, ageColumn, passwordColumn, quoteColumn],
         where: '$idColumn = ?',
         whereArgs: [id]);
         maps.length > 0 ? new User.formMap(maps.first) : null;
@@ -94,7 +89,7 @@ class UserUtils {
   
   Future<List<User>> getAllUser() async {
     await this.open("user.db");
-    var res = await db.query(userTable, columns: [idColumn, firstnameColumn, lastnameColumn, usernameColumn, passwordColumn, phoneColumn, emailColumn]);
+    var res = await db.query(userTable, columns: [idColumn, useridColumn, nameColumn, ageColumn, passwordColumn, quoteColumn]);
     List<User> userList = res.isNotEmpty ? res.map((c) => User.formMap(c)).toList() : [];
     return userList;
   }

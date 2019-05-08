@@ -46,13 +46,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  image_picker:
-    dependency: "direct main"
-    description:
-      name: image_picker
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.12+1"
   matcher:
     dependency: transitive
     description:
@@ -149,6 +142,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.2"
+  toast:
+    dependency: "direct main"
+    description:
+      name: toast
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.4"
   typed_data:
     dependency: transitive
     description:
