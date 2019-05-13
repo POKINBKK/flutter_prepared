@@ -3,7 +3,7 @@ import './ui/registerPage.dart';
 import './ui/loginPage.dart';
 import './ui/homePage.dart';
 import './ui/profilePage.dart';
-import './ui/myfriendPage.dart';
+import './ui/friendPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         "/register": (context) => RegisterPage(),
         "/home": (context) => HomePage(),
         "/profile": (context) => ProfilePage(),
-        "/myfriend": (context) => MyfriendPage(),
+        "/friend": (context) => FriendPage(),
       },
     );
   }

@@ -75,6 +75,7 @@ class LoginPageState extends State<LoginPage>{
                   var userList = await allUser;
                   for(var i=0; i < userList.length;i++){
                     if (userid == userList[i].userid && password == userList[i].password){
+                      CurrentUser.ID = userList[i].id;
                       CurrentUser.USERID = userList[i].userid;
                       CurrentUser.NAME = userList[i].name;
                       CurrentUser.AGE = userList[i].age;

@@ -19,10 +19,11 @@ class HomePageState extends State<HomePage>{
       ),
       body: Container(
         child: ListView(
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 0),
           children: <Widget>[
             ListTile(
               title: Text('Hello ${CurrentUser.NAME}'),
-              subtitle: Text('this is my quote ${CurrentUser.QUOTE}'),
+              subtitle: Text('this is my quote "${CurrentUser.QUOTE}"'),
             ),
             RaisedButton(
               child: Text("PROFILE SETUP"),
@@ -33,7 +34,7 @@ class HomePageState extends State<HomePage>{
             RaisedButton(
               child: Text("MY FRIENDS"),
               onPressed: () {
-                Navigator.of(context).pushNamed('/myfriend');
+                Navigator.of(context).pushReplacementNamed('/friend');
               },
             ),
             RaisedButton(
