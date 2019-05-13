@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../utils/currentUser.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
+import './myfriendPage.dart';
 
 
 class FriendPage extends StatefulWidget{
@@ -126,7 +126,12 @@ class FriendPageState extends State<FriendPage>{
               ],
             ),
             onTap: (){
-              print("card ${(values[index].id).toString()} click");
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => MyfriendPage(id: values[index].id, name: values[index].name),
+                ),
+              );
             },
             ),
           );
