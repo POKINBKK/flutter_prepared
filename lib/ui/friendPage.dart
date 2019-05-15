@@ -80,7 +80,6 @@ class FriendPageState extends State<FriendPage>{
                     if (snapshot.hasError){
                       return new Text('Error: ${snapshot.error}');
                     } else {
-                      print(snapshot.data);
                       return createListView(context, snapshot);
                     }
                 }
